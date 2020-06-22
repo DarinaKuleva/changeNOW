@@ -6,10 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <meta name="description" content="ChangeNOW Page">
+<script type='text/javascript' defer src='https://changenow.io/embeds/exchange-widget/v2/stepper-connector.js'></script>
   <title>ChangeNOW</title>
 </head>
 <body>
-<div id="root"></div>
-  <script type='text/javascript' async src='https://changenow.io/embeds/exchange-widget/v2/stepper-connector.js'></script>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 </html>
