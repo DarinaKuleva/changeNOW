@@ -7,7 +7,6 @@ interface Props {
 }
 
 const DeviceViewerProvider: React.FC<Props> = ({children}) => {
-
   const [ deviceWidth, setDeviceWidth ] = React.useState<number>(window.innerWidth)
 
   React.useEffect(() => {

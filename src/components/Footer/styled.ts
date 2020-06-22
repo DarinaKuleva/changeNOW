@@ -22,4 +22,3 @@ export const Now = styled.span`
   text-transform: uppercase;
   color: #00C26F;
 `
-

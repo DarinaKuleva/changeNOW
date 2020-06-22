@@ -52,7 +52,6 @@ export const Title = styled.h2<Props>`
 
 export const QuestionTitle = styled.h3<Props>`
   margin: 0;
-  // padding-bottom: 12px;
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;

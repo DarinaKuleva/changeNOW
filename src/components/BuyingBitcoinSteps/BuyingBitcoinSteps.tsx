@@ -11,9 +11,7 @@ const BuyingBitcoinSteps: React.FC = () => {
     <Styled.Container isMobileView={isMobileView}>
       {buyingBitcoinSteps.map(step =>
         <Styled.Step key={step.index} isMobileView={isMobileView}>
-
-            <StepImage step={step.index}/>
-
+          <StepImage step={step.index}/>
           <Styled.StepDescription isMobileView={isMobileView}>
             <Styled.Title isMobileView={isMobileView}>
               {step.title}
