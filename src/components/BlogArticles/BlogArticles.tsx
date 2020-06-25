@@ -1,18 +1,20 @@
 import * as React from 'react'
 import DeviceViewerContext from '../../context/DeviceViewer/DeviceViewerContext'
-import { blogArticles } from '../../constants'
+import { blogArticles, MAX_MOBILE_WIDTH, MAX_TABLET_WIDTH } from '../../constants'
 import ArticleImage from './ArticleImage/ArticleImage'
 import * as Styled from './styled'
 
 const BlogArticles: React.FC = () => {
-  const isMobileView = React.useContext(DeviceViewerContext)
+  const deviceWidth = React.useContext(DeviceViewerContext)
+  const isMobileView = deviceWidth <= MAX_MOBILE_WIDTH
+  const isTabletView = deviceWidth <= MAX_TABLET_WIDTH
 
   return (
     <>
       <Styled.Title isMobileView={isMobileView}>
         Learn more about crypto
       </Styled.Title>
-      <Styled.Blog>
+      <Styled.Blog isTabletView={isTabletView}>
         {blogArticles.map(article =>
           <Styled.Article
             key={article.index}

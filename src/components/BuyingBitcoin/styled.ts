@@ -2,7 +2,8 @@ import styled  from 'styled-components'
 import logo from '../../images/logo.svg'
 
 interface Props {
-  isMobileView: boolean
+  isMobileView?: boolean,
+  isTabletView?: boolean
 }
 
 export const Container = styled.div<Props>`
@@ -14,21 +15,45 @@ export const Container = styled.div<Props>`
   align-items: center;
   position: relative;
   
+  ${({ isTabletView }) => isTabletView && `
+    justify-content: center;
+  `}
+  
   &::before {
     content: '';
     position: absolute;
     background: url(${logo});
     width: 55px;
     height: 32px;
-    top: ${({isMobileView}) => isMobileView ? '-40px;' : '-90px;'}
-    left: ${({isMobileView}) => isMobileView ? '20px;' : '0'}
+    top: ${({isMobileView}) => 
+      isMobileView 
+        ? '-40px;' 
+        : '-90px;'
+    }
+    
+    left: ${({isMobileView, isTabletView}) =>
+      isMobileView
+        ? '20px;'
+        : isTabletView
+          ? '20%;'
+          : '0px;'
+    }
   }  
 `
 
 export const BuyingDescription = styled.section<Props>`
   display: flex;
   flex-wrap: wrap;
-  width: ${({isMobileView}) => isMobileView ? '350px;' : '540px;'}
+  width: 540px;
+  
+  ${({ isTabletView }) => isTabletView && `
+    width: 100%;
+    text-align: center;
+  `}
+  
+  ${({ isMobileView }) => isMobileView && `
+    width: 350px;
+  `}
 `
 
 export const Title = styled.h1<Props>`
@@ -38,18 +63,30 @@ export const Title = styled.h1<Props>`
   line-height: 64px;
   font-size: 58px;
   
+  ${({ isTabletView }) => isTabletView && `
+    width: 540px;;
+    text-align: center;
+    margin: 0 auto;
+  `}
+  
   ${({ isMobileView }) => isMobileView && `
     font-size: 28px;
     margin-left: 20px;
   `}
 `
 
-export const Context = styled.p`
+export const Context = styled.p<Props>`
   margin: 24px 0;
   opacity: 0.6;
   font-weight: normal;
   font-size: 27px;
   line-height: 40px;
+  
+  ${({ isTabletView }) => isTabletView && `
+    width: 700px;
+    text-align: center;
+    margin: 30px auto;
+  `}
 `
 
 export const BuyingWidget = styled.section<Props>`

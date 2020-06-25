@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 interface Props {
   isMobileView?: boolean,
-  isOpenAnswer?: boolean
+  isOpenAnswer?: boolean,
+  isTabletView?: boolean
 }
 
 export const Container = styled.div<Props>`
@@ -20,6 +21,8 @@ export const Question = styled.section<Props>`
   &:not(:last-child) {
     margin: 0 auto 4px auto;
   }
+  
+  ${({ isTabletView }) => isTabletView && `max-width: 900px;`}
   
   ${({ isMobileView }) => isMobileView && `
     width: 288px;
@@ -78,7 +81,7 @@ export const Answer = styled.p<Props>`
   padding-top: 0;
   
   ${({ isOpenAnswer }) => isOpenAnswer && `
-    transition: padding-top 300ms ease-in, max-height 2s ease-out;
+    transition: padding-top 300ms ease-in, max-height 6s ease-out;
     padding-top: 12px;
     max-height: 500px;
   `}

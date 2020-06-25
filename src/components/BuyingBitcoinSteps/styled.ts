@@ -1,7 +1,8 @@
 import styled  from 'styled-components'
 
 interface Props {
-  isMobileView: boolean
+  isMobileView?: boolean,
+  isTabletView?: boolean
 }
 
 export const Container = styled.section<Props>`
@@ -35,6 +36,12 @@ export const Step = styled.section<Props>`
     margin: 0 auto;
   }
   
+  ${({ isTabletView }) => isTabletView && `
+    &:nth-child(even) img {
+      margin-left: auto;
+    }
+  `}
+  
   ${({ isMobileView }) => isMobileView && `
     justify-content: center;
     align-items: center;
@@ -58,6 +65,11 @@ export const StepDescription = styled.div<Props>`
   font-size: 20px;
   padding-bottom: 10px;
   
+  ${({ isTabletView }) => isTabletView && `
+    width: 100%;
+    text-align: center;
+  `}
+  
   ${({ isMobileView }) => isMobileView && `
     width: 100%;
     text-align: center;
@@ -80,7 +92,11 @@ export const MobileContext = styled.p`
   margin: 0 auto;
 `
 
-export const DesktopContext = styled.p`
+export const DesktopContext = styled.p<Props>`
   margin: 15px 0 0 0;
   width: 560px;
+  
+  ${({ isTabletView }) => isTabletView && `
+    margin: 15px auto 0 auto;
+  `}
 `

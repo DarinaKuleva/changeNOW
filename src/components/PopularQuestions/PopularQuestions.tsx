@@ -1,11 +1,14 @@
 import * as React from 'react'
 import DeviceViewerContext from '../../context/DeviceViewer/DeviceViewerContext'
-import { popularQuestions } from '../../constants'
+import { MAX_MOBILE_WIDTH, MAX_TABLET_WIDTH, popularQuestions } from '../../constants'
 import arrowIcon from '../../images/arrow.svg'
 import * as Styled from './styled'
 
 const PopularQuestions: React.FC = () => {
-  const isMobileView = React.useContext(DeviceViewerContext)
+  const deviceWidth = React.useContext(DeviceViewerContext)
+  const isMobileView = deviceWidth <= MAX_MOBILE_WIDTH
+  const isTabletView = deviceWidth <= MAX_TABLET_WIDTH
+
   const [ collapsedAnswerIds, setCollapseAnswerId ] = React.useState<Array<number>>([])
 
   const getOpenAnswer = (id: number): boolean => collapsedAnswerIds.some(_id => _id === id)
@@ -25,6 +28,7 @@ const PopularQuestions: React.FC = () => {
       {popularQuestions.map(question =>
         <Styled.Question
           key={question.index}
+          isTabletView={isTabletView}
           isMobileView={isMobileView}
           onClick={() => toggleCollapse(question.index)}
         >

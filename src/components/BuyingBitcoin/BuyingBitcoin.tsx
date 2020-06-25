@@ -1,18 +1,21 @@
 import * as React from 'react'
 import DeviceViewerContext from '../../context/DeviceViewer/DeviceViewerContext'
 import * as Styled from './styled'
+import { MAX_MOBILE_WIDTH, MAX_TABLET_WIDTH } from '../../constants'
 
 const BuyingBitcoin: React.FC = () => {
-  const isMobileView = React.useContext(DeviceViewerContext)
+  const deviceWidth = React.useContext(DeviceViewerContext)
+  const isMobileView = deviceWidth <= MAX_MOBILE_WIDTH
+  const isTabletView = deviceWidth <= MAX_TABLET_WIDTH
 
   return (
-    <Styled.Container isMobileView={isMobileView}>
-      <Styled.BuyingDescription isMobileView={isMobileView}>
-        <Styled.Title isMobileView={isMobileView}>
+    <Styled.Container isMobileView={isMobileView} isTabletView={isTabletView}>
+      <Styled.BuyingDescription isMobileView={isMobileView} isTabletView={isTabletView}>
+        <Styled.Title isMobileView={isMobileView} isTabletView={isTabletView}>
           buy your first bitcoin
         </Styled.Title>
         {!isMobileView &&
-          <Styled.Context>
+          <Styled.Context isTabletView={isTabletView}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu malesuada.
           </Styled.Context>
         }

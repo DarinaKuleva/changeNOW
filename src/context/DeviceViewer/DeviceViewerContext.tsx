@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const isMobileView = window.innerWidth <= 375
-const DeviceViewerContext = React.createContext<boolean>(isMobileView)
+const deviceWidth = window.innerWidth
+const DeviceViewerContext = React.createContext<number>(deviceWidth)
 
 export default DeviceViewerContext

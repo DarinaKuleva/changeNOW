@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 interface Props {
-  isMobileView: boolean
+  isMobileView?: boolean,
+  isTabletView?: boolean
 }
 
 export const Title = styled.h3<Props>`
@@ -54,10 +55,14 @@ export const ArticleTitle = styled.p`
   margin: 0 auto;
 `
 
-export const Blog = styled.section`
+export const Blog = styled.section<Props>`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 1140px;
   margin: 0 auto;
+  
+  ${({ isTabletView }) => isTabletView && `
+    max-width: 800px;
+  `}
 `
